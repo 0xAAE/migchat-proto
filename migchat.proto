@@ -50,7 +50,7 @@ message UpdateUsers {
 }
 
 message User {
-    uint64 user_id = 1;
+    uint64 id = 1;
     string name = 2;
     string short_name = 3;
 }
@@ -69,7 +69,7 @@ message ChatInfo {
 }
 
 message Chat {
-    uint32 chat_id = 1;
+    uint64 id = 1;
     bool permanent = 2;
     string description = 3;
     repeated uint64 users = 4;
@@ -77,13 +77,13 @@ message Chat {
 
 message ChatReference {
     uint64 user_id = 1;
-    uint32 chat_id = 2;
+    uint64 chat_id = 2;
 }
 
 message Invitation {
     uint64 from_user_id = 1;
     uint64 to_user_id = 2;
-    uint32 chat_id = 3;
+    uint64 chat_id = 3;
 }
 
 message Result {
@@ -106,8 +106,9 @@ message Attachment {
 }
 
 message Post {
-    uint64 user_id = 1;
-    uint32 chat_id = 2;
-    string text = 3;
-    repeated Attachment attachments = 4;
+    uint64 id = 1;
+    uint64 user_id = 2;
+    uint64 chat_id = 3;
+    string text = 4;
+    repeated Attachment attachments = 9;
 }
