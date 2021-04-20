@@ -46,7 +46,8 @@ message Registration {
 
 message UpdateUsers {
     repeated User added = 1;
-    repeated User gone = 2;
+    repeated uint64 offline = 2;
+    repeated uint64 online = 3;
 }
 
 message User {
