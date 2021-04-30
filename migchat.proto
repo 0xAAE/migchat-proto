@@ -11,7 +11,7 @@ package migchat;
 // The service definition.
 service ChatRoomService {
   // Sends a reqistration request
-  rpc Register (UserInfo) returns (Registration) {}
+  rpc Register (UserInfo) returns (RegistrationInfo) {}
   // Sends a logout request using the first invitation from the server
   rpc Logout (Registration) returns (Result) {}
   // Asks for invitations
@@ -42,6 +42,12 @@ message UserInfo {
 
 message Registration {
     uint64 user_id = 1;
+}
+
+message RegistrationInfo {
+    Registration registration = 1;
+    // Unix timestamp, in seconds from the 01.01.1970
+    uint64 created = 2;
 }
 
 message UpdateUsers {
