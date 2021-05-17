@@ -136,7 +136,7 @@ message Post {
 message HistoryParams {
     uint64 chat_id = 1;
     uint64 idx_from = 2;
-    uint64 idx_to = 3;
+    uint64 count = 3;
 }
 
 message ChatHistory {
