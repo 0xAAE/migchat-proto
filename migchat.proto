@@ -33,6 +33,8 @@ service ChatRoomService {
   rpc EnterChat(ChatReference) returns (Result) {}
   // Leaves active chat
   rpc LeaveChat(ChatReference) returns (Result) {}
+  // Get older posts from the particular chat
+  rpc GetChatHistory(HistoryParams) returns (ChatHistory) {}
 }
 
 message UserInfo {
@@ -64,8 +66,13 @@ message User {
     uint64 created = 4;
 }
 
+message ChatUpdate {
+    Chat chat = 1;
+    uint64 currently_posts = 2;
+}
+
 message UpdateChats {
-    repeated Chat updated = 1;
+    repeated ChatUpdate updated = 1;
     repeated uint64 gone = 2;
 }
 
@@ -124,4 +131,14 @@ message Post {
     // Unix timestamp, in seconds from the 01.01.1970
     uint64 created = 5;
     repeated Attachment attachments = 9;
+}
+
+message HistoryParams {
+    uint64 chat_id = 1;
+    uint64 idx_from = 2;
+    uint64 idx_to = 3;
+}
+
+message ChatHistory {
+    repeated Post posts = 1;
 }
